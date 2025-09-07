@@ -20,7 +20,7 @@ jobs:
       run: sudo apt-get update
 
     - name: Setup dependencies
-      run: sudo apt-get install --fix-missing libgl1-mesa-dev libglew-dev
+      run: sudo apt-get install --fix-missing libgl1-mesa-dev libglew-dev libglfw3-dev
 
     - name: Configure CMake
       run: cmake -B ${{github.workspace}}/build
