@@ -34,5 +34,5 @@ target_link_libraries(game shader glfw ${GLFW_LIBRARIES} ${OPENGL_LIBRARIES} GLE
 if (MSVC)
   target_compile_options(game PUBLIC /W4 /w14640 $<$<CONFIG:Release>:/O2> $<$<CONFIG:Debug>:/Z7>)
 else()
-  target_compile_options(game PUBLIC -Wall -Wextra -Wshadow -Wdelete-abstract-non-virtual-dtor -pedantic $<$<CONFIG:Release>:-O3> $<$<CONFIG:Debug>:-g>)
+  target_compile_options(game PUBLIC -Wall -Wextra -Wshadow -Wdelete-non-virtual-dtor -pedantic $<$<CONFIG:Release>:-O3> $<$<CONFIG:Debug>:-g>)
 endif()
