@@ -25,8 +25,12 @@ target_compile_options(glfw PRIVATE "-w")  # suppress warnings from glfw
 
 add_subdirectory(vendor/glad)
 
-add_executable(game xgl/main.cpp)
-target_link_libraries(game glfw ${GLFW_LIBRARIES} ${OPENGL_LIBRARIES} GLEW::GLEW glad)
+add_library(shader STATIC src/shader.cpp include/shader.hpp)
+target_link_libraries(shader glad)
+target_include_directories(shader PUBLIC include PRIVATE src)
+
+add_executable(game src/main.cpp)
+target_link_libraries(game shader glfw ${GLFW_LIBRARIES} ${OPENGL_LIBRARIES} GLEW::GLEW glad)
 if (MSVC)
   target_compile_options(game PUBLIC /W4 /w14640 $<$<CONFIG:Release>:/O2> $<$<CONFIG:Debug>:/Z7>)
 else()
